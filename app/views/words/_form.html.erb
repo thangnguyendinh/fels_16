@@ -1,0 +1,20 @@
+<%= form_for @word do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.label :category_id %>
+  <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+  <p>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </p>
+  <%= f.fields_for :word_answers do |builder| %>
+    <% word_answer = builder.object %>
+      <p>
+        <%= builder.check_box :correct %>
+        <%= builder.text_field :content %>
+      </p>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+ 
+<%= link_to "Back", words_path %>
