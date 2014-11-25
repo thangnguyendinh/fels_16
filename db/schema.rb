@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118063940) do
+ActiveRecord::Schema.define(version: 20141119062025) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20141118063940) do
     t.string   "remember_digest"
   end
 
+  create_table "users_answers", force: true do |t|
+    t.string   "users_answer"
+    t.integer  "status",       limit: 1
+    t.integer  "user_id"
+    t.integer  "word_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users_answers", ["user_id"], name: "index_users_answers_on_user_id"
+  add_index "users_answers", ["word_id"], name: "index_users_answers_on_word_id"
+
   create_table "word_answers", force: true do |t|
     t.string   "content"
     t.integer  "word_id"
@@ -39,6 +51,18 @@ ActiveRecord::Schema.define(version: 20141118063940) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "wordlessions", force: true do |t|
+    t.string   "wordanswervietnamese"
+    t.string   "wordanswerB"
+    t.string   "wordanswerC"
+    t.string   "wordanswerD"
+    t.integer  "word_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wordlessions", ["word_id"], name: "index_wordlessions_on_word_id"
 
   create_table "words", force: true do |t|
     t.string   "content"
