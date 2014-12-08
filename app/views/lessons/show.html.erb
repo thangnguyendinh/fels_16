@@ -1,0 +1,22 @@
+<% provide(:title, "results") %>
+<h1>result</h1>
+ 
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= @lesson.id %>
+    <table style="width:40%">
+      <tr>
+        <h2><td>word</td></h2>
+        <h2><td>answer</td></h2>    
+        <h2><td>result</td></h2>
+      </tr>
+      <% @lesson.users_answers.each do |users_answer|%>
+        <tr>
+          <td><%= users_answer.word.content %></td>
+          <td><%= users_answer.word_answer.content %></td>
+          <td><%= users_answer.word.word_answers.correct.first.content %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
