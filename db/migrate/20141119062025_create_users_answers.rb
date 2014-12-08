@@ -1,12 +1,13 @@
 class CreateUsersAnswers < ActiveRecord::Migration
   def change
     create_table :users_answers do |t|
-      t.string :users_answer
+      t.references :word_answer, index: true
       t.integer :status, :limit => 1
-      t.references :user, index: true
       t.references :word, index: true
+      t.references :lesson, index: true
 
       t.timestamps
     end
   end
 end
+  
