@@ -1,0 +1,22 @@
+<% provide(:title, "lessons") %>
+<h1>lessons</h1>
+ 
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <form action="users_answers", method = "post">
+      <%= @category_name %>
+      <p></br>
+        <% i = 0 %>
+        <% @category_word.each do |w| %>
+          <%= w.content %></br></br>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <%= hidden_field_tag "word_id" + i.to_s, w.id %>
+          <%= hidden_field_tag "word_content" + i.to_s, w.content %>
+          <% @word_answer[i].each do |f| %>
+            <%= f.content %><%= radio_button_tag "word_answer" + i.to_s, f.content %> 
+          <% end %></p>
+          <% i = i + 1 %>
+        <% end %>
+      <%= submit_tag "complete" %>
+  </div>
+</div>

@@ -1,10 +1,9 @@
 <% provide(:title, "index category") %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= @category.each do |c| %>
+    <% @category.each do |c| %>
       <h1><%= c.name %></h1>
-      <h2>you are learned <%= UsersAnswer.where(user_id: session[:user_id],status: 1).where('word_id in (?)',Word.select("word_id").where(category_id: c.id)).count %>/<%= Word.where(category_id: c.id).count %></h2>
-      <a href="#">Start</a>
+      <%= link_to "start", new_lesson_path(:category_id => c.id) %>
     <% end %>
   </div>
 </div>

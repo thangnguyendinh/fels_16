@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
   def index
     @category = Category.all
-    @word = Word.all
   end
 
   def new
@@ -45,6 +44,7 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name, :description)
     end
+
 end
 
 
