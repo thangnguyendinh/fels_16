@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   resources :users
   resources :categories
   resources :words
+  resources :users_answers
+  resources :lessons
+  resources :word_lists
+  resources :user_shows
+  resources :homes
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
