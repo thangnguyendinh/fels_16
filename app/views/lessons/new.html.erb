@@ -4,12 +4,6 @@
       <%= @category.name %>
       <%= render "shared/error_messages", object: f.object %>
       <%= f.fields_for :users_answers do |builder| %>
-        </br>
-	<%= form_for @lesson do |f| %>
-	  <%= @category.name %>
-	  <%= render "shared/error_messages", object: f.object %>
-	  <%= f.fields_for :users_answers do |builder| %>
-        <p></br>
         <%= builder.object.word.content %><br>
         <% builder.object.word.word_answers.each do |word_answer| %>
           <%= word_answer.content %>
@@ -21,5 +15,5 @@
     <% end %>
   </div>
 </div>
-</div>
+
 
