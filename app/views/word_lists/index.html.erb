@@ -1,0 +1,23 @@
+<% provide(:title, "word lists") %>
+<h1>word lists</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <form action="word_lists", method = "get">
+      <%= select_tag "category_id", options_from_collection_for_select(@categories, "id", "name") %>
+      <%= radio_button_tag 'type_filter', 1 %>learned
+      <%= radio_button_tag 'type_filter', 0 %>not learned
+      <%= radio_button_tag 'type_filter', 2 %>all
+      <%= submit_tag "Filter" %>
+    <% if @word_lists %>  
+      <% @word_lists.each do |f| %>
+        <table style="width:40%">
+          <tr>
+            <td><%= f.content %></td>
+            <td><%= f.word_answers.correct.first.content %></td>
+          </tr>
+        </table>
+      <% end %>
+    <% end %>
+  </div>
+</div>
